@@ -16,7 +16,7 @@ class CreateCandidatesTable extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->string('email', 191);
+            $table->string('email', 191)->unique();
             $table->timestamps();
         });
     }
