@@ -12,9 +12,9 @@
 */
 
 $router->get('/', function () use ($router) {
-    return app(\App\Http\Controllers\CandidatesController::class)->index();
+    return view('app');
 });
-$router->get('/cancidates','CandidatesController@index');
-$router->post('/cancidates','CandidatesController@store');
-$router->put('/cancidates/{id}','CandidatesController@update');
-$router->delete('/cancidates/{id}','CandidatesController@destroy');
+$router->get('/candidates','CandidatesController@index');
+$router->post('/candidates','CandidatesController@store');
+$router->put('/candidates/{id}','CandidatesController@update');
+$router->delete('/candidates/{id}','CandidatesController@destroy');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class CandidatesController extends Controller
@@ -74,7 +75,11 @@ class CandidatesController extends Controller
         try {
             $this->validate($request, [
                 'name' => 'required',
-                'email' => 'required|email|unique:candidates'
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('candidates')->ignore($id)
+                ]
             ]);
         } catch (ValidationException $exception) {
             return [
